@@ -7,17 +7,17 @@ This project is being developed by [@putra2078](https://github.com/putra2078) & 
 ### 1. Clone repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/nabildzr/frs-face-recognition-system
 cd face_recognition
 ```
 
-### 2. Buat virtual environment
+### 2. Create Virtual Environment
 
 ```bash
 python -m venv your_virtual_environment
 ```
 
-### 3. Aktifkan virtual environment
+### 3. Active the Virtual Environment
 
 **Windows (Command Prompt):**
 

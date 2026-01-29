@@ -1,9 +1,5 @@
 # Face Recognition
 
----
-
-
-
 This project is being developed by [@putra2078](https://github.com/putra2078) & [@nabildzr](https://github.com/nabildzr).
 
 ## Setup

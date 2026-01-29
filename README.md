@@ -14,7 +14,7 @@ cd face_recognition
 ### 2. Buat virtual environment
 
 ```bash
-python -m venv billrecog
+python -m venv your_virtual_environment
 ```
 
 ### 3. Aktifkan virtual environment
@@ -22,19 +22,19 @@ python -m venv billrecog
 **Windows (Command Prompt):**
 
 ```bash
-billrecog\Scripts\activate
+your_virtual_environment\Scripts\activate
 ```
 
 **Windows (PowerShell):**
 
 ```bash
-billrecog\Scripts\Activate.ps1
+your_virtual_environment\Scripts\Activate.ps1
 ```
 
 **Linux/Mac:**
 
 ```bash
-source billrecog/bin/activate
+source your_virtual_environment/bin/activate
 ```
 
 ### 4. Install dependencies
@@ -46,5 +46,5 @@ pip install -r requirements.txt
 ## Run
 
 ```
- source your_virtualenvironment/Scripts/activate && python frec.py
+ source your_virtual_environment/Scripts/activate && python frec.py
 ```

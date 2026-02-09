@@ -1,0 +1,26 @@
+services:
+  frs-system:
+    build: .
+    image: frs-system:latest
+    container_name: frs-container
+    # Enable TTY and STDIN for interactive mode if needed (though not strictly for GUI)
+    tty: true
+    stdin_open: true
+    
+    # Environment variables
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    
+    # Volumes for X11 socket and code/data
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./known_faces:/app/known_faces
+      - ./face_ref.xml:/app/face_ref.xml
+      
+    # Device mapping for webcam
+    devices:
+      - /dev/video0:/dev/video0
+      
+    # Network mode host might be needed for some X11 setups, or just bridge
+    # network_mode: host

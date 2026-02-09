@@ -1,3 +1,6 @@
+import os
+import glob
+os.environ["QT_QPA_PLATFORM"] = "xcb"
 import face_recognition
 import cv2
 import numpy as np
@@ -5,23 +8,43 @@ import numpy as np
 # Get a reference to webcam #0 (the default one)
 video_capture = cv2.VideoCapture(0)
 
-# Load a sample picture and learn how to recognize it.
-obama_image = face_recognition.load_image_file("nabil.jpg")
-obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
-
-# Load a second sample picture and learn how to recognize it.
-biden_image = face_recognition.load_image_file("risky.jpeg")
-biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
+# Path to the directory containing known faces
+KNOWN_FACES_DIR = "known_faces"
 
 # Create arrays of known face encodings and their names
-known_face_encodings = [
-    obama_face_encoding,
-    biden_face_encoding
-]
-known_face_names = [
-    "Nabildzr",
-    "Risky"
-]
+known_face_encodings = []
+known_face_names = []
+
+print("Loading known faces...")
+# Loop through all image files in the directory
+valid_extensions = ['*.jpg', '*.jpeg', '*.png']
+image_files = []
+for ext in valid_extensions:
+    image_files.extend(glob.glob(os.path.join(KNOWN_FACES_DIR, ext)))
+
+for image_path in image_files:
+    try:
+        # Load the image
+        image = face_recognition.load_image_file(image_path)
+        
+        # Get the face encoding
+        encodings = face_recognition.face_encodings(image)
+        
+        if len(encodings) > 0:
+            known_face_encodings.append(encodings[0])
+            
+            # Extract the name from the filename (e.g., "putra.jpg" -> "Putra")
+            filename = os.path.basename(image_path)
+            name = os.path.splitext(filename)[0].capitalize()
+            known_face_names.append(name)
+            print(f"Loaded: {name}")
+        else:
+            print(f"Warning: No face found in {image_path}")
+            
+    except Exception as e:
+        print(f"Error loading {image_path}: {e}")
+
+print(f"Total known faces loaded: {len(known_face_names)}")
 
 # Initialize some variables
 face_locations = []

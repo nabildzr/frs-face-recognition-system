@@ -1,3 +1,5 @@
+import os
+os.environ["QT_QPA_PLATFORM"] = "xcb"
 import cv2
 
 face_rev = cv2.CascadeClassifier("face_ref.xml")

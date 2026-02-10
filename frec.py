@@ -53,7 +53,7 @@ face_names = []
 # process_this_frame = True
 
 frame_count = 0
-PROCESS_EVERY_N_FRAMES = 30  # Process every 5th frame (lebih ringan)
+PROCESS_EVERY_N_FRAMES = 5  # Process every 5th frame (lebih ringan)
 
 while True:
     # Grab a single frame of video

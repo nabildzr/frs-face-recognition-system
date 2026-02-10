@@ -64,7 +64,7 @@ if known_geometry is not None:
 cap = cv2.VideoCapture(0)
 
 frame_count = 0
-PROCESS_EVERY_N_FRAMES = 20
+PROCESS_EVERY_N_FRAMES = 10
 face_landmarks_list = []
 
 while True:
